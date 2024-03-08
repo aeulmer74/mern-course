@@ -1,0 +1,23 @@
+{
+	"client": "Thunder Client",
+	"collectionName": "Jobify",
+	"dateExported": "2024-03-08T18:25:47.183Z",
+	"version": "1.1",
+	"folders": [],
+	"requests": [
+		{
+			"_id": "c75025e6-1bbd-46ab-a692-a152e3d3c41c",
+			"colId": "2d9601bb-77bd-49d7-a09b-f0df8be3d6ba",
+			"containerId": "",
+			"name": "localhost:5100",
+			"url": "localhost:5100",
+			"method": "GET",
+			"sortNum": 10000,
+			"created": "2024-03-08T18:16:43.700Z",
+			"modified": "2024-03-08T18:16:43.700Z",
+			"headers": [],
+			"params": [],
+			"tests": []
+		}
+	]
+}
