@@ -1,12 +1,15 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import morgan from 'morgan';
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 5100;
 
 //middleware
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 app.use(express.json());
 
 //routes
@@ -18,6 +21,6 @@ app.post('/', (req, res) => {
 	res.json({ message: 'received', data: req.body });
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
 	console.log('listening on port', process.env.PORT);
 });
