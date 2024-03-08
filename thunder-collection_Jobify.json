@@ -1,0 +1,57 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Jobify",
+    "dateExported": "2024-03-08T20:47:45.081Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5fc4b51d-c4fe-409e-804b-bf3aa115f270",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "localhost:5100",
+            "url": "localhost:5100",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-08T18:31:52.575Z",
+            "modified": "2024-03-08T18:31:52.575Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b286cba4-4ab5-4021-bb1f-9a4c540c410c",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "jobs",
+            "url": "{{LOCAL_URL}}/jobs",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-03-08T20:43:28.214Z",
+            "modified": "2024-03-08T20:45:41.827Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "0a5b084b-eff1-4a46-853f-315bcf6f1805",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "http://localhost:5100",
+            "url": "http://localhost:5100",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-08T19:38:26.612Z",
+            "modified": "2024-03-08T19:38:26.612Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"double\":\"quotes\",\n  \"json\": [1,2,4,5,6],\n  \"message\": \"Got data from post\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
