@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Jobify",
-    "dateExported": "2024-03-08T20:47:45.081Z",
+    "dateExported": "2024-03-08T21:33:42.024Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -23,7 +23,7 @@
             "_id": "b286cba4-4ab5-4021-bb1f-9a4c540c410c",
             "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
             "containerId": "",
-            "name": "jobs",
+            "name": "GetAllJobs",
             "url": "{{LOCAL_URL}}/jobs",
             "method": "GET",
             "sortNum": 15000,
@@ -35,22 +35,73 @@
             "tests": []
         },
         {
+            "_id": "ade0a99d-d706-4298-ba19-7ceaa73bdb07",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "GetJobById",
+            "url": "{{LOCAL_URL}}/jobs/zEM-",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2024-03-08T20:59:34.437Z",
+            "modified": "2024-03-08T21:16:30.196Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
             "_id": "0a5b084b-eff1-4a46-853f-315bcf6f1805",
             "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
             "containerId": "",
-            "name": "http://localhost:5100",
-            "url": "http://localhost:5100",
+            "name": "AddJob",
+            "url": "{{LOCAL_URL}}/jobs",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-03-08T19:38:26.612Z",
-            "modified": "2024-03-08T19:38:26.612Z",
+            "modified": "2024-03-08T20:52:39.166Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"double\":\"quotes\",\n  \"json\": [1,2,4,5,6],\n  \"message\": \"Got data from post\"\n}",
+                "raw": "{\n  \"company\":\"Luther\",\n  \"position\": \"developer\"\n}",
                 "form": []
             },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "869d37e4-7d5d-4ec3-b67c-7b13b40ea0eb",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "DeleteJob",
+            "url": "{{LOCAL_URL}}/jobs/zUYygmd2F0EjA66dHsE2O",
+            "method": "DELETE",
+            "sortNum": 25000,
+            "created": "2024-03-08T21:28:16.995Z",
+            "modified": "2024-03-08T21:30:47.244Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "437e9470-76f5-4dfe-8996-4f07fc8436e7",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "",
+            "name": "UpdateJob",
+            "url": "{{LOCAL_URL}}/jobs/l2xVSm7on8UqzwxcIxsxS",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-03-08T21:18:57.406Z",
+            "modified": "2024-03-08T21:28:56.729Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"company\":\"Luther\",\n  \"position\": \"developer\"\n}",
+                "form": []
+            },
+            "reqType": "post",
             "tests": []
         }
     ]
