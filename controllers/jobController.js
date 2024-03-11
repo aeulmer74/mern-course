@@ -1,4 +1,6 @@
 import { nanoid } from 'nanoid';
+import Job from '../models/JobModel.js';
+
 //data
 let jobs = [
 	{ id: nanoid(), company: 'travelers', position: 'SWE 1' },
@@ -7,20 +9,17 @@ let jobs = [
 
 //C
 export const addJob = async (req, res) => {
-	const { company, position } = req.body;
-	if (!company || !position) {
-		return res
-			.status(400)
-			.json({ message: 'Bad Request, please provide position and company name' });
+	try {
+		const newJob = await Job.create(req.body);
+		res.status(201).json({ message: 'new job added', newJob });
+	} catch (error) {
+		res.status(500).json({ msg: 'Server Error' });
 	}
-	const newJob = { id: nanoid(), company, position };
-	jobs.push(newJob);
-	res.status(201).json({ message: 'new job added', newJob });
 };
 
 //R
 export const getAllJobs = async (req, res) => {
-	console.log('is hit?');
+	const jobs = await Job.find();
 	res.status(200).json({ jobs });
 };
 
