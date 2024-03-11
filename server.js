@@ -5,13 +5,15 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 
 import jobRouter from './routers/jobRouter.js';
-import { StatusCodes } from 'http-status-codes';
+import { NotFoundError } from './errors/customErrors.js';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5100;
 
 //middleware
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
@@ -20,13 +22,10 @@ app.use('/api/v1/jobs/', jobRouter);
 
 //404 handler
 app.use('*', (req, res) => {
-	res.status(StatusCodes.NOT_FOUND).json({ message: 'NOT FOUND' });
+	throw new NotFoundError('Not Found');
 });
 
-app.use((err, req, res, next) => {
-	console.log(err);
-	res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Something exploded ' });
-});
+app.use(errorHandlerMiddleware);
 
 try {
 	await mongoose.connect(process.env.MONGO_URI);
