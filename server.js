@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 
 import jobRouter from './routers/jobRouter.js';
+import { StatusCodes } from 'http-status-codes';
 
 dotenv.config();
 const app = express();
@@ -19,12 +20,12 @@ app.use('/api/v1/jobs/', jobRouter);
 
 //404 handler
 app.use('*', (req, res) => {
-	res.status(404).json({ message: 'NOT FOUND' });
+	res.status(StatusCodes.NOT_FOUND).json({ message: 'NOT FOUND' });
 });
 
 app.use((err, req, res, next) => {
 	console.log(err);
-	res.status(500).json({ message: 'Something exploded ' });
+	res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Something exploded ' });
 });
 
 try {
