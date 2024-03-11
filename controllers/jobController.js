@@ -1,20 +1,9 @@
-import { nanoid } from 'nanoid';
 import Job from '../models/JobModel.js';
-
-//data
-let jobs = [
-	{ id: nanoid(), company: 'travelers', position: 'SWE 1' },
-	{ id: nanoid(), company: 'liberty', position: 'SWE 2' },
-];
 
 //C
 export const addJob = async (req, res) => {
-	try {
-		const newJob = await Job.create(req.body);
-		res.status(201).json({ message: 'new job added', newJob });
-	} catch (error) {
-		res.status(500).json({ msg: 'Server Error' });
-	}
+	const newJob = await Job.create(req.body);
+	res.status(201).json({ message: 'new job added', newJob });
 };
 
 //R
@@ -25,41 +14,29 @@ export const getAllJobs = async (req, res) => {
 
 export const getJob = async (req, res) => {
 	const { jobId } = req.params;
-	const job = jobs.find((job) => job.id === jobId);
+	const job = await Job.findById(jobId);
 	if (!job) {
-		throw new Error('No job with matching ID found');
-		// return res.status(404).json({ message: 'not found' });
+		return res.status(404).json({ message: `no job found with ${jobId}` });
 	}
-	res.status(200).json({ job });
+	res.status(200).json({ msg: 'Success', job });
 };
 
 //U
 export const updateJob = async (req, res) => {
 	const { jobId } = req.params;
-	const { company, position } = req.body;
-	if (!company || !position) {
-		return res
-			.status(400)
-			.json({ message: 'Bad Request, please provide position and company name' });
-	}
-	const job = jobs.find((job) => job.id === jobId);
+	const job = await Job.findByIdAndUpdate({ _id: jobId }, req.body, { new: true });
 	if (!job) {
-		throw new Error('No job with matching ID found');
-		// return res.status(404).json({ message: 'not found' });
+		return res.status(404).json({ message: `no job found with ${jobId}` });
 	}
-	job.company = company;
-	job.position = position;
-	res.status(200).json({ job });
+	res.status(200).json({ msg: `Job ${jobId} updated`, updatedJob: job });
 };
 
 //D
 export const deleteJob = async (req, res) => {
 	const { jobId } = req.params;
-	const newJobs = jobs.filter((job) => job.id !== jobId);
-	if (!newJobs) {
-		throw new Error('No job with matching ID found');
-		// return res.status(404).json({ message: 'not found' });
+	const removedJob = Job.findByIdAndDelete(jobId);
+	if (!removedJob) {
+		return res.status(404).json({ message: `no job found with ${jobId}` });
 	}
-	jobs = [...newJobs];
-	res.status(200).json({ jobs });
+	res.status(200).json({ job: removedJob });
 };
