@@ -6,18 +6,19 @@ import mongoose from 'mongoose';
 
 import jobRouter from './routers/jobRouter.js';
 import { NotFoundError } from './errors/customErrors.js';
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5100;
 
 //middleware
-import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
-
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
+
 app.use(express.json());
+
 app.use('/api/v1/jobs/', jobRouter);
 
 //404 handler
