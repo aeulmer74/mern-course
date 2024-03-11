@@ -1,13 +1,13 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
-dotenv.config();
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 
+import jobRouter from './routers/jobRouter.js';
+
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 5100;
-
-//routers
-import jobRouter from './routers/jobRouter.js';
 
 //middleware
 if (process.env.NODE_ENV === 'development') {
@@ -26,7 +26,12 @@ app.use((err, req, res, next) => {
 	res.status(500).json({ message: 'Something exploded ' });
 });
 
-//LISTENING
-app.listen(port, () => {
-	console.log('listening on port', process.env.PORT);
-});
+try {
+	await mongoose.connect(process.env.MONGO_URI);
+	app.listen(port, () => {
+		console.log('listening on port', port);
+	});
+} catch (err) {
+	console.log(err);
+	process.exit(1);
+}
