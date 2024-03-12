@@ -58,3 +58,12 @@ export const validateUser = withValidationErrors([
 			if (user) throw new BadRequestError(`Email is already in use`);
 		}),
 ]);
+
+export const validateLogin = withValidationErrors([
+	body('password').notEmpty().withMessage('Password is required'),
+	body('email')
+		.notEmpty()
+		.withMessage('email is required')
+		.isEmail()
+		.withMessage('Email is invalid'),
+]);

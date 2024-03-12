@@ -1,6 +1,7 @@
 import User from '../models/UserModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { saltPass } from '../uitls/utility.js';
+import { compareHash, saltPass } from '../uitls/utility.js';
+import { UnauthenticatedError } from '../errors/customErrors.js';
 
 const register = async (req, res) => {
 	const isFirstAdmin = (await User.countDocuments()) === 0;
@@ -12,6 +13,11 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+	const { email, password } = req.body;
+	const user = await User.findOne({ email });
+	const isValidUser = user && (await compareHash(password, user.password));
+
+	if (!isValidUser) throw new UnauthenticatedError('Password is incorrect');
 	res.status(StatusCodes.OK).json('');
 };
 
