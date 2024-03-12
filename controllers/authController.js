@@ -1,6 +1,6 @@
 import User from '../models/UserModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { compareHash, saltPass } from '../uitls/utility.js';
+import { compareHash, createJWT, saltPass } from '../uitls/utility.js';
 import { UnauthenticatedError } from '../errors/customErrors.js';
 
 const register = async (req, res) => {
@@ -16,9 +16,17 @@ const login = async (req, res) => {
 	const { email, password } = req.body;
 	const user = await User.findOne({ email });
 	const isValidUser = user && (await compareHash(password, user.password));
-
 	if (!isValidUser) throw new UnauthenticatedError('Password is incorrect');
-	res.status(StatusCodes.OK).json('');
+
+	const oneDay = 1000 * 60 * 60 * 24;
+	const token = createJWT({ userId: user._id, role: user.role });
+
+	res.cookie('login_token', token, {
+		httpOnly: true,
+		expires: new Date(Date.now() + oneDay),
+		secure: process.env.NODE_ENV === 'production',
+	});
+	res.status(StatusCodes.OK).json({ msg: 'login successful' });
 };
 
 export { register, login };
