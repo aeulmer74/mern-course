@@ -18,3 +18,9 @@ export const createJWT = (payload) => {
 	const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
 	return token;
 };
+
+export const verifyJWT = (token) => {
+	const decoded = jwt.verify(token, process.env.JWT_SECRET);
+	console.log(decoded);
+	return decoded;
+};
