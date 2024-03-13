@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Jobify",
-    "dateExported": "2024-03-12T15:20:22.645Z",
+    "dateExported": "2024-03-13T14:28:23.156Z",
     "version": "1.1",
     "folders": [
         {
@@ -17,6 +17,13 @@
             "containerId": "",
             "created": "2024-03-12T14:58:11.120Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "0ae1d5af-857f-4de3-8847-88fef5ff184b",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-03-12T21:09:35.584Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -45,11 +52,11 @@
             "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
             "containerId": "e94508a7-607a-404b-a65d-97205f4705bb",
             "name": "DeleteJob",
-            "url": "{{LOCAL_URL}}/jobs/65ef2fd5d6356001e83a53d9",
+            "url": "{{LOCAL_URL}}/jobs/65f0b73ae7d6cacf8109f5ee",
             "method": "DELETE",
             "sortNum": 20000,
             "created": "2024-03-08T21:28:16.995Z",
-            "modified": "2024-03-11T17:48:29.687Z",
+            "modified": "2024-03-12T20:13:17.761Z",
             "headers": [],
             "params": [],
             "reqType": "del",
@@ -84,7 +91,7 @@
             "method": "GET",
             "sortNum": 40000,
             "created": "2024-03-08T20:59:34.437Z",
-            "modified": "2024-03-11T20:32:58.551Z",
+            "modified": "2024-03-12T16:05:41.537Z",
             "headers": [],
             "params": [],
             "reqType": "get",
@@ -99,14 +106,15 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-03-12T14:58:22.744Z",
-            "modified": "2024-03-12T15:20:00.129Z",
+            "modified": "2024-03-12T20:22:42.578Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\":\"Andy\",\n  \"lastName\":\"Ulmer\",\n  \"password\": \"pass1234\",\n  \"location\": \"indy\",\n  \"email\":\"aeulmer74@att.net\"\n}",
+                "raw": "{\n  \"name\":\"peter\",\n  \"lastName\":\"Ulmer\",\n  \"password\": \"pass1234\",\n  \"location\": \"indy\",\n  \"email\":\"peter@att.net\"\n}",
                 "form": []
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -133,10 +141,80 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2024-03-12T14:58:56.813Z",
-            "modified": "2024-03-12T14:59:00.618Z",
+            "modified": "2024-03-12T21:55:13.276Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"aeulmer74@att.net\",\n  \"password\":\"pass1234\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "6fd4f796-14e6-4121-a451-25344c8e536e",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "0ae1d5af-857f-4de3-8847-88fef5ff184b",
+            "name": "GetCurrentUser",
+            "url": "{{LOCAL_URL}}/users",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-12T21:09:44.783Z",
+            "modified": "2024-03-12T21:17:43.580Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "4f543942-3f2b-4bdf-9324-8b6a50322967",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "68e01348-db14-4d71-9f0e-f1d38ff5bed9",
+            "name": "Logout",
+            "url": "{{LOCAL_URL}}/auth/logout",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-12T20:51:41.944Z",
+            "modified": "2024-03-12T20:51:55.755Z",
             "headers": [],
             "params": [],
             "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "4a2c6485-f811-4403-a9dc-89c547c4e81b",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "0ae1d5af-857f-4de3-8847-88fef5ff184b",
+            "name": "GetApplicationStats",
+            "url": "{{LOCAL_URL}}/users/admin/stats",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-12T21:10:02.551Z",
+            "modified": "2024-03-12T21:17:46.713Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "7bfdf305-b1e2-45ef-a7c0-f9a9c91b60ba",
+            "colId": "36f564b3-772e-4f79-9395-fdd59f16a5ad",
+            "containerId": "0ae1d5af-857f-4de3-8847-88fef5ff184b",
+            "name": "UpdateUser",
+            "url": "{{LOCAL_URL}}/users/update-user",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2024-03-12T21:10:11.094Z",
+            "modified": "2024-03-13T14:28:12.594Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Andy\",\n    \"email\": \"aeulmer74@att.net\",\n    \"lastName\": \"Ulmer\",\n    \"location\": \"Andy\"\n}",
+                "form": []
+            },
+            "reqType": "patch",
             "tests": []
         }
     ]
