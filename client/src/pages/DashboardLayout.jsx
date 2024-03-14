@@ -1,14 +1,24 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Dashboard';
 import { BigSideBar, Navbar, SmallSideBar } from '../components';
 import { createContext, useContext, useState } from 'react';
 import { checkDefaultTheme } from '../utils/checkDefaultTheme';
+import myAxios from '../utils/customFetch';
+
+export const dashLoader = async () => {
+	try {
+		const { data } = await myAxios.get('/users');
+		return data;
+	} catch (error) {
+		return redirect('/');
+	}
+};
 
 const DashboardContext = createContext();
 
 const DashboardLayout = () => {
 	//temp
-	const user = { name: 'john' };
+	const { user } = useLoaderData();
 	const [showSideBar, setShowSideBar] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 	const navigate = useNavigate();
@@ -40,7 +50,7 @@ const DashboardLayout = () => {
 					<div>
 						<Navbar />
 						<div className="dashboard-page">
-							<Outlet />
+							<Outlet context={{ user }} />
 						</div>
 					</div>
 				</main>

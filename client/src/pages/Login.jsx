@@ -26,7 +26,7 @@ export const loginAction = async ({ request }) => {
 };
 
 const Login = () => {
-	const nav = useNavigation;
+	const nav = useNavigation();
 	const isSubmitting = nav.state === 'submitting';
 	const errors = useActionData();
 
