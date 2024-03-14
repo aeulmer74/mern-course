@@ -15,5 +15,6 @@ module.exports = {
 		'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 		'react/no-unescaped-entities': ['off'],
 		'react/prop-types': ['off'],
+		'react-refresh/only-export-components': ['off'],
 	},
 };

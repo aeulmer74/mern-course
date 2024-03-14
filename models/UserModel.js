@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { USER_ROLES } from '../uitls/constants.js';
 
 const UserSchema = new mongoose.Schema({
-	name: String,
+	firstName: String,
 	email: String,
 	password: String,
 	lastName: {

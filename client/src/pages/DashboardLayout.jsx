@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Dashboard';
 import { BigSideBar, Navbar, SmallSideBar } from '../components';
 import { createContext, useContext, useState } from 'react';
@@ -11,6 +11,7 @@ const DashboardLayout = () => {
 	const user = { name: 'john' };
 	const [showSideBar, setShowSideBar] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
+	const navigate = useNavigate();
 
 	const toggleDarkTheme = () => {
 		console.log(isDarkTheme ? 'Lightness' : 'Darkness');
@@ -26,6 +27,7 @@ const DashboardLayout = () => {
 
 	const logoutUser = async () => {
 		console.log('Logging out');
+		navigate('/');
 	};
 
 	return (

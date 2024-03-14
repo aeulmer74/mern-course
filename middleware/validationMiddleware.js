@@ -48,7 +48,7 @@ export const validateIdParam = withValidationErrors([
 ]);
 
 export const validateUser = withValidationErrors([
-	body('name').notEmpty().withMessage('First name is required'),
+	body('firstName').notEmpty().withMessage('First name is required'),
 	body('lastName').notEmpty().withMessage('Last name is required'),
 	body('password')
 		.notEmpty()
