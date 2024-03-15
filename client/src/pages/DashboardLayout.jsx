@@ -4,6 +4,7 @@ import { BigSideBar, Navbar, SmallSideBar } from '../components';
 import { createContext, useContext, useState } from 'react';
 import { checkDefaultTheme } from '../utils/checkDefaultTheme';
 import myAxios from '../utils/customFetch';
+import { toast } from 'react-toastify';
 
 export const dashLoader = async () => {
 	try {
@@ -36,8 +37,9 @@ const DashboardLayout = () => {
 	};
 
 	const logoutUser = async () => {
-		console.log('Logging out');
 		navigate('/');
+		await myAxios.get('/auth/logout');
+		toast.success('Logged out!');
 	};
 
 	return (
