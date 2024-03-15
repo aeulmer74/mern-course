@@ -1,4 +1,61 @@
-const AddJob = () => {
-	return <h1>AddJob</h1>;
+import { Form, useNavigation, redirect, useOutletContext } from 'react-router-dom';
+import { FormRow, FormRowSelect } from '../components';
+import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
+import Wrapper from '../assets/wrappers/DashboardFormPage';
+import { toast } from 'react-toastify';
+import myAxios from '../utils/customFetch';
+
+const addAction = async ({ request }) => {
+	const formData = await request.formData();
+	const data = Object.fromEntries(formData);
+	try {
+		await myAxios.post('/jobs/', data);
+		toast.success(`Job added`, { autoClose: 1000 });
+		return redirect('/all-jobs');
+	} catch (e) {
+		console.log(e);
+		toast.error(e?.response?.data?.msg);
+	}
+	return null;
 };
+
+const AddJob = () => {
+	const { user } = useOutletContext();
+	const navigate = useNavigation();
+	const isSubmitting = navigate.state === 'submitting';
+	return (
+		<Wrapper>
+			<Form method="post" className="form">
+				<h4 className="form-title">Add Job</h4>
+				<div className="form-center">
+					<FormRow type="text" name="company" labelText={'Company'} />
+					<FormRow type="text" name="position" labelText={'Position'} />
+					<FormRow
+						type="text"
+						name="jobLocation"
+						labelText={'Job Location'}
+						defaultValue={user.location}
+					/>
+					<FormRowSelect
+						name="jobStatus"
+						options={Object.values(JOB_STATUS)}
+						labelText="Job Status"
+						defaultValue={JOB_STATUS.PENDING}
+					/>
+					<FormRowSelect
+						name="jobType"
+						options={Object.values(JOB_TYPE)}
+						labelText="Job Type"
+						defaultValue={JOB_TYPE.FULL_TIME}
+					/>
+				</div>
+				<button type="submit" className="btn btn-block form-btn" disabled={isSubmitting}>
+					{!isSubmitting ? 'Submit' : '...'}
+				</button>
+			</Form>
+		</Wrapper>
+	);
+};
+
+AddJob.action = addAction;
 export default AddJob;

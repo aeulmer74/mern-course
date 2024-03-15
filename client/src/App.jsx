@@ -14,10 +14,6 @@ import {
 } from './pages';
 import { checkDefaultTheme } from './utils/checkDefaultTheme';
 
-import { registerAction } from './pages/Register';
-import { loginAction } from './pages/Login';
-import { dashLoader } from './pages/DashboardLayout';
-
 checkDefaultTheme();
 
 const router = createBrowserRouter([
@@ -30,15 +26,15 @@ const router = createBrowserRouter([
 			{
 				path: 'register',
 				element: <Register />,
-				action: registerAction,
+				action: Register.action,
 			},
-			{ path: 'login', element: <Login />, action: loginAction },
+			{ path: 'login', element: <Login />, action: Login.action },
 			{
 				path: 'dashboard',
 				element: <DashboardLayout />,
-				loader: dashLoader,
+				loader: DashboardLayout.loader,
 				children: [
-					{ index: true, element: <AddJob /> },
+					{ index: true, element: <AddJob />, action: AddJob.action },
 					{ path: 'admin', element: <Admin /> },
 					{ path: 'all-jobs', element: <AllJobs /> },
 					{ path: 'stats', element: <Stats /> },

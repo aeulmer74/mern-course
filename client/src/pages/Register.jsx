@@ -5,7 +5,7 @@ import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
-export const registerAction = async ({ request }) => {
+const registerAction = async ({ request }) => {
 	const formData = await request.formData();
 	const data = Object.fromEntries(formData);
 	try {
@@ -74,4 +74,6 @@ const Register = () => {
 		</Wrapper>
 	);
 };
+
+Register.action = registerAction;
 export default Register;

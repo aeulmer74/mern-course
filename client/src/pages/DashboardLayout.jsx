@@ -6,7 +6,7 @@ import { checkDefaultTheme } from '../utils/checkDefaultTheme';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
-export const dashLoader = async () => {
+const dashLoader = async () => {
 	try {
 		const { data } = await myAxios.get('/users');
 		return data;
@@ -18,7 +18,6 @@ export const dashLoader = async () => {
 const DashboardContext = createContext();
 
 const DashboardLayout = () => {
-	//temp
 	const { user } = useLoaderData();
 	const [showSideBar, setShowSideBar] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
@@ -37,9 +36,9 @@ const DashboardLayout = () => {
 	};
 
 	const logoutUser = async () => {
-		navigate('/');
 		await myAxios.get('/auth/logout');
-		toast.success('Logged out!');
+		navigate('/');
+		toast.success('Logged out!', { autoClose: 1000 });
 	};
 
 	return (
@@ -62,4 +61,5 @@ const DashboardLayout = () => {
 };
 // eslint-disable-next-line react-refresh/only-export-components
 export const useDashboardContext = () => useContext(DashboardContext);
+DashboardLayout.loader = dashLoader;
 export default DashboardLayout;

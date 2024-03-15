@@ -4,7 +4,7 @@ import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
-export const loginAction = async ({ request }) => {
+const loginAction = async ({ request }) => {
 	const formData = await request.formData();
 	const data = Object.fromEntries(formData);
 	const errors = {
@@ -64,4 +64,5 @@ const Login = () => {
 		</Wrapper>
 	);
 };
+Login.action = loginAction;
 export default Login;
