@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 				children: [
 					{ index: true, element: <AddJob />, action: AddJob.action },
 					{ path: 'admin', element: <Admin /> },
-					{ path: 'all-jobs', element: <AllJobs /> },
+					{ path: 'all-jobs', element: <AllJobs />, loader: AllJobs.loader },
 					{ path: 'stats', element: <Stats /> },
 					{ path: 'profile', element: <Profile /> },
 				],

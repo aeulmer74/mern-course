@@ -11,7 +11,7 @@ const addAction = async ({ request }) => {
 	try {
 		await myAxios.post('/jobs/', data);
 		toast.success(`Job added`, { autoClose: 1000 });
-		return redirect('/all-jobs');
+		return redirect('all-jobs');
 	} catch (e) {
 		console.log(e);
 		toast.error(e?.response?.data?.msg);
