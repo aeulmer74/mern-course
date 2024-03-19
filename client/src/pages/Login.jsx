@@ -3,6 +3,7 @@ import { FormRow, Logo } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
+import SubmitBtn from '../components/SubmitBtn';
 
 const loginAction = async ({ request }) => {
 	const formData = await request.formData();
@@ -50,9 +51,7 @@ const Login = () => {
 					defaultValue="pass1234"
 					required={true}
 				/>
-				<button className="btn btn-block" type="submit" disabled={isSubmitting}>
-					{!isSubmitting ? 'Submit' : '...'}
-				</button>
+				<SubmitBtn isSubmitting={isSubmitting} isForm={false} />
 				<Link className="btn btn-block" to="/dashboard">
 					Explore the app
 				</Link>

@@ -4,6 +4,7 @@ import { FormRow, FormRowSelect } from '../components';
 import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
+import SubmitBtn from '../components/SubmitBtn';
 
 const editLoader = async ({ params }) => {
 	try {
@@ -68,9 +69,7 @@ const EditJob = () => {
 						defaultValue={job.jobType}
 					/>
 				</div>
-				<button type="submit" className="btn btn-block form-btn" disabled={isSubmitting}>
-					{!isSubmitting ? 'Submit' : '...'}
-				</button>
+				<SubmitBtn isSubmitting={isSubmitting} isForm={true} />
 			</Form>
 		</Wrapper>
 	);

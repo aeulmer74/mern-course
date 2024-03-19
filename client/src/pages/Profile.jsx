@@ -3,6 +3,7 @@ import { Form, useNavigation, useOutletContext } from 'react-router-dom';
 import { FormRow } from '../components';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
+import SubmitBtn from '../components/SubmitBtn';
 
 const profileAction = async ({ request }) => {
 	const formData = await request.formData();
@@ -66,12 +67,7 @@ const Profile = () => {
 						labelText={'location'}
 						defaultValue={location}
 					/>
-					<button
-						type="submit"
-						className="btn btn-block form-btn"
-						disabled={isSubmitting}>
-						{!isSubmitting ? 'Submit' : '...'}
-					</button>
+					<SubmitBtn isSubmitting={isSubmitting} isForm={true} />
 				</div>
 			</Form>
 		</Wrapper>

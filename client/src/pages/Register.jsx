@@ -4,6 +4,7 @@ import { Form, redirect, useNavigation, Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
+import SubmitBtn from '../components/SubmitBtn';
 
 const registerAction = async ({ request }) => {
 	const formData = await request.formData();
@@ -63,9 +64,7 @@ const Register = () => {
 					labelText="password"
 					required={true}
 				/>
-				<button className="btn btn-block" type="submit" disabled={isSubmitting}>
-					{!isSubmitting ? 'Submit' : '...'}
-				</button>
+				<SubmitBtn isSubmitting={isSubmitting} isForm={false} />
 				<p>
 					Already a member?&nbsp;&nbsp;
 					<Link to="/login">Login</Link>
