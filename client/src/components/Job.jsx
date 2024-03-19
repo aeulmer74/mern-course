@@ -3,6 +3,7 @@ import { Link, Form } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
 import day from 'dayjs';
+// eslint-disable-next-line no-unused-vars
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 const Job = ({ _id, position, company, jobLocation, jobType, createdAt, jobStatus }) => {
