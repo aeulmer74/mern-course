@@ -14,16 +14,64 @@ const editLoader = async ({ params }) => {
 		return redirect('/dashboard/all-jobs');
 	}
 };
-const editAction = () => {
-	return 'null';
+const editAction = async ({ request, params }) => {
+	const formData = await request.formData();
+	const data = Object.fromEntries(formData);
+	try {
+		await myAxios.patch(`/jobs/${params.id}`, data);
+		toast.success('Job Edited Successfully');
+		return redirect('/dashboard/all-jobs');
+	} catch (e) {
+		console.log(e);
+		toast.error(e?.response?.data?.msg);
+		return e;
+	}
 };
 
 const EditJob = () => {
 	const { job } = useLoaderData();
-	console.log(job);
+	const navigate = useNavigation();
+	const isSubmitting = navigate.state === 'submitting';
 	return (
 		<Wrapper>
-			<h1>EditJob</h1>
+			<Form method="post" className="form">
+				<h4 className="form-title">Edit Job</h4>
+				<div className="form-center">
+					<FormRow
+						type="text"
+						name="position"
+						labelText={'Position'}
+						defaultValue={job.position}
+					/>
+					<FormRow
+						type="text"
+						name="company"
+						labelText={'Company'}
+						defaultValue={job.company}
+					/>
+					<FormRow
+						type="text"
+						name="jobLocation"
+						labelText={'Job Location'}
+						defaultValue={job.jobLocation}
+					/>
+					<FormRowSelect
+						name="jobStatus"
+						options={Object.values(JOB_STATUS)}
+						labelText="Job Status"
+						defaultValue={job.jobStatus}
+					/>
+					<FormRowSelect
+						name="jobType"
+						options={Object.values(JOB_TYPE)}
+						labelText="Job Type"
+						defaultValue={job.jobType}
+					/>
+				</div>
+				<button type="submit" className="btn btn-block form-btn" disabled={isSubmitting}>
+					{!isSubmitting ? 'Submit' : '...'}
+				</button>
+			</Form>
 		</Wrapper>
 	);
 };

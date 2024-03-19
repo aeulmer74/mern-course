@@ -15,8 +15,8 @@ const addAction = async ({ request }) => {
 	} catch (e) {
 		console.log(e);
 		toast.error(e?.response?.data?.msg);
+		return e;
 	}
-	return null;
 };
 
 const AddJob = () => {
@@ -28,8 +28,8 @@ const AddJob = () => {
 			<Form method="post" className="form">
 				<h4 className="form-title">Add Job</h4>
 				<div className="form-center">
-					<FormRow type="text" name="company" labelText={'Company'} />
 					<FormRow type="text" name="position" labelText={'Position'} />
+					<FormRow type="text" name="company" labelText={'Company'} />
 					<FormRow
 						type="text"
 						name="jobLocation"
