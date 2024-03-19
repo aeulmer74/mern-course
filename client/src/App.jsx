@@ -51,7 +51,7 @@ const router = createBrowserRouter([
 						action: EditJob.action,
 					},
 					{ path: 'stats', element: <Stats /> },
-					{ path: 'profile', element: <Profile /> },
+					{ path: 'profile', element: <Profile />, action: Profile.action },
 					{ path: 'delete-job/:id', action: DeleteJob.action },
 				],
 			},
