@@ -14,6 +14,9 @@ const allJobsLoader = async () => {
 	}
 };
 
+const allJobsAction = () => {
+	return null;
+};
 const AllJobsContext = createContext();
 
 const AllJobs = () => {
@@ -29,4 +32,5 @@ const AllJobs = () => {
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAllJobsContext = () => useContext(AllJobsContext);
 AllJobs.loader = allJobsLoader;
+AllJobs.action = allJobsAction;
 export default AllJobs;

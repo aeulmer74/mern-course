@@ -34,12 +34,12 @@ export const validateJob = withValidationErrors([
 ]);
 
 export const validateIdParam = withValidationErrors([
-	param('jobId').custom(async (value, req) => {
-		const isAdmin = req.user.role === 'admin';
-		const isOwner = req.user.userId === job.createdBy.toString();
+	param('jobId').custom(async (value, { req }) => {
 		const isValidId = mongoose.Types.ObjectId.isValid(value);
 		if (!isValidId) throw new BadRequestError('MongoId is invalid');
 		const job = await Job.findById(value);
+		const isAdmin = req.user.role === 'admin';
+		const isOwner = req.user.userId === job.createdBy.toString();
 		if (!job) throw new NotFoundError(`No job found with ${value}`);
 		if (!isAdmin && !isOwner) {
 			throw new UnauthorizedError('Not authorized to access this resource');
