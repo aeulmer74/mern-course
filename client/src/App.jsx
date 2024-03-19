@@ -12,6 +12,7 @@ import {
 	Admin,
 	AllJobs,
 	EditJob,
+	DeleteJob,
 } from './pages';
 import { checkDefaultTheme } from './utils/checkDefaultTheme';
 
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
 					},
 					{ path: 'stats', element: <Stats /> },
 					{ path: 'profile', element: <Profile /> },
+					{ path: 'delete-job/:id', action: DeleteJob.action },
 				],
 			},
 		],
