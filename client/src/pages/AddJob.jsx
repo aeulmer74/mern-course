@@ -1,4 +1,4 @@
-import { Form, useNavigation, redirect, useOutletContext } from 'react-router-dom';
+import { Form, redirect, useOutletContext } from 'react-router-dom';
 import { FormRow, FormRowSelect } from '../components';
 import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
@@ -22,8 +22,7 @@ const addAction = async ({ request }) => {
 
 const AddJob = () => {
 	const { user } = useOutletContext();
-	const navigate = useNavigation();
-	const isSubmitting = navigate.state === 'submitting';
+
 	return (
 		<Wrapper>
 			<Form method="post" className="form">
@@ -50,7 +49,7 @@ const AddJob = () => {
 						defaultValue={JOB_TYPE.FULL_TIME}
 					/>
 				</div>
-				<SubmitBtn isSubmitting={isSubmitting} isForm={true} />
+				<SubmitBtn isForm={true} />
 			</Form>
 		</Wrapper>
 	);

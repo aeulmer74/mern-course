@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
+import { Form, redirect, useLoaderData } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { FormRow, FormRowSelect } from '../components';
 import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
@@ -31,8 +31,7 @@ const editAction = async ({ request, params }) => {
 
 const EditJob = () => {
 	const { job } = useLoaderData();
-	const navigate = useNavigation();
-	const isSubmitting = navigate.state === 'submitting';
+
 	return (
 		<Wrapper>
 			<Form method="post" className="form">
@@ -69,7 +68,7 @@ const EditJob = () => {
 						defaultValue={job.jobType}
 					/>
 				</div>
-				<SubmitBtn isSubmitting={isSubmitting} isForm={true} />
+				<SubmitBtn isForm={true} />
 			</Form>
 		</Wrapper>
 	);

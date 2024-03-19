@@ -51,7 +51,7 @@ const Login = () => {
 					defaultValue="pass1234"
 					required={true}
 				/>
-				<SubmitBtn isSubmitting={isSubmitting} isForm={false} />
+				<SubmitBtn isForm={false} />
 				<Link className="btn btn-block" to="/dashboard">
 					Explore the app
 				</Link>

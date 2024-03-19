@@ -1,5 +1,5 @@
 import Wrapper from '../assets/wrappers/DashboardFormPage';
-import { Form, useNavigation, useOutletContext } from 'react-router-dom';
+import { Form, useOutletContext } from 'react-router-dom';
 import { FormRow } from '../components';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
@@ -25,8 +25,6 @@ const profileAction = async ({ request }) => {
 const Profile = () => {
 	const { user } = useOutletContext();
 	const { firstName, lastName, email, location } = user;
-	const navigation = useNavigation();
-	const isSubmitting = navigation.state === 'submitting';
 
 	return (
 		<Wrapper>
@@ -67,7 +65,7 @@ const Profile = () => {
 						labelText={'location'}
 						defaultValue={location}
 					/>
-					<SubmitBtn isSubmitting={isSubmitting} isForm={true} />
+					<SubmitBtn isForm={true} />
 				</div>
 			</Form>
 		</Wrapper>

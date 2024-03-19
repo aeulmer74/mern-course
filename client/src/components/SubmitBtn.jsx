@@ -1,4 +1,7 @@
-const SubmitBtn = ({ isSubmitting, isForm }) => {
+import { useNavigation } from 'react-router-dom';
+const SubmitBtn = ({ isForm }) => {
+	const nav = useNavigation();
+	const isSubmitting = nav.state === 'submitting';
 	return (
 		<button
 			type="submit"

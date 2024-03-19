@@ -1,6 +1,6 @@
 import Logo from '../components/Logo';
 import FormRow from '../components/FormRow';
-import { Form, redirect, useNavigation, Link } from 'react-router-dom';
+import { Form, redirect, Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
@@ -21,9 +21,6 @@ const registerAction = async ({ request }) => {
 };
 
 const Register = () => {
-	const navigation = useNavigation();
-	const isSubmitting = navigation.state === 'submitting';
-
 	return (
 		<Wrapper>
 			<Form method="post" className="form">
@@ -64,7 +61,7 @@ const Register = () => {
 					labelText="password"
 					required={true}
 				/>
-				<SubmitBtn isSubmitting={isSubmitting} isForm={false} />
+				<SubmitBtn isForm={false} />
 				<p>
 					Already a member?&nbsp;&nbsp;
 					<Link to="/login">Login</Link>
