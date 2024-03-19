@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import cloudinary from 'cloudinary';
 
 import userRouter from './routers/userRouter.js';
 import jobRouter from './routers/jobRouter.js';
@@ -15,6 +16,11 @@ import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleWare.js';
 
 dotenv.config();
+cloudinary.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_API_KEY,
+	api_secret: process.env.CLOUD_API_SECRET,
+});
 const app = express();
 const port = process.env.PORT || 5100;
 

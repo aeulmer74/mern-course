@@ -14,6 +14,7 @@ const profileAction = async ({ request }) => {
 	}
 	try {
 		await myAxios.patch('users/update-user', formData); //sends form data directly
+		toast.success('Profile Updated!');
 	} catch (e) {
 		console.log(e);
 		toast.error(e?.response?.data?.msg);
@@ -48,7 +49,7 @@ const Profile = () => {
 					</div>
 					<FormRow
 						type={'text'}
-						name="name"
+						name="firstName"
 						labelText={'first name'}
 						defaultValue={firstName}
 					/>

@@ -77,7 +77,7 @@ export const validateLogin = withValidationErrors([
 ]);
 
 export const validateUpdateUser = withValidationErrors([
-	body('name').notEmpty().withMessage('First name is required'),
+	body('firstName').notEmpty().withMessage('First name is required'),
 	body('lastName').notEmpty().withMessage('Last name is required'),
 	body('location').notEmpty().withMessage('Location is required'),
 	body('email')
