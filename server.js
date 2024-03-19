@@ -4,6 +4,8 @@ import * as dotenv from 'dotenv';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 import userRouter from './routers/userRouter.js';
 import jobRouter from './routers/jobRouter.js';
@@ -17,6 +19,9 @@ const app = express();
 const port = process.env.PORT || 5100;
 
 //middleware
+const __dirname = dirname(fileURLToPath(import.meta.url)); //cause ES6
+app.use(express.static(path.resolve(__dirname, './public')));
+
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
