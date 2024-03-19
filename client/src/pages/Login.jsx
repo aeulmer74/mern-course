@@ -1,9 +1,8 @@
-import { Form, redirect, useNavigation, Link, useActionData } from 'react-router-dom';
-import { FormRow, Logo } from '../components';
+import { Form, redirect, Link, useActionData } from 'react-router-dom';
+import { FormRow, Logo, SubmitBtn } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
-import SubmitBtn from '../components/SubmitBtn';
 
 const loginAction = async ({ request }) => {
 	const formData = await request.formData();
@@ -27,8 +26,6 @@ const loginAction = async ({ request }) => {
 };
 
 const Login = () => {
-	const nav = useNavigation();
-	const isSubmitting = nav.state === 'submitting';
 	const errors = useActionData();
 
 	return (

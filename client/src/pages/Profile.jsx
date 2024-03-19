@@ -1,9 +1,8 @@
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { Form, useOutletContext } from 'react-router-dom';
-import { FormRow } from '../components';
+import { FormRow, SubmitBtn } from '../components';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
-import SubmitBtn from '../components/SubmitBtn';
 
 const profileAction = async ({ request }) => {
 	const formData = await request.formData();

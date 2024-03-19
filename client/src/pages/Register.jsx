@@ -4,7 +4,7 @@ import { Form, redirect, Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
 import { toast } from 'react-toastify';
-import SubmitBtn from '../components/SubmitBtn';
+import { SubmitBtn } from '../components';
 
 const registerAction = async ({ request }) => {
 	const formData = await request.formData();

@@ -1,10 +1,9 @@
 import { Form, redirect, useOutletContext } from 'react-router-dom';
-import { FormRow, FormRowSelect } from '../components';
+import { FormRow, FormRowSelect, SubmitBtn } from '../components';
 import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
-import SubmitBtn from '../components/SubmitBtn';
 
 const addAction = async ({ request }) => {
 	const formData = await request.formData();
