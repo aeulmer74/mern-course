@@ -1,4 +1,4 @@
-import { Form, redirect, Link, useActionData } from 'react-router-dom';
+import { Form, redirect, Link, useActionData, useNavigate } from 'react-router-dom';
 import { FormRow, Logo, SubmitBtn } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import myAxios from '../utils/customFetch';
@@ -27,6 +27,22 @@ const loginAction = async ({ request }) => {
 
 const Login = () => {
 	const errors = useActionData();
+	const navigate = useNavigate();
+	const loginDemoUser = async () => {
+		const data = {
+			email: 'test@gmail.com',
+			password: 'pass1234',
+		};
+		try {
+			await myAxios.post('/auth/login', data);
+			toast.success(`Take a look around :)`, { autoClose: 1000 });
+			return navigate('/dashboard');
+		} catch (e) {
+			console.log(e);
+			toast.error(e?.response?.data?.msg);
+			return e;
+		}
+	};
 
 	return (
 		<Wrapper>
@@ -49,9 +65,9 @@ const Login = () => {
 					required={true}
 				/>
 				<SubmitBtn isForm={false} />
-				<Link className="btn btn-block" to="/dashboard">
+				<button type="button" className="btn btn-block" onClick={loginDemoUser}>
 					Explore the app
-				</Link>
+				</button>
 				<p>
 					Not a member yet?&nbsp;&nbsp;
 					<Link to="/register">Register</Link>
