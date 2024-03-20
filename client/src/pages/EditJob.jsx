@@ -1,7 +1,7 @@
 import { Form, redirect, useLoaderData } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/DashboardFormPage';
 import { FormRow, FormRowSelect, SubmitBtn } from '../components';
-import { JOB_STATUS, JOB_TYPE } from '../../../uitls/constants';
+import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants';
 import { toast } from 'react-toastify';
 import myAxios from '../utils/customFetch';
 

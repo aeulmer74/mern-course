@@ -1,6 +1,6 @@
 import { body, validationResult, param } from 'express-validator';
 import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors/customErrors.js';
-import { JOB_STATUS, JOB_TYPE, USER_ROLES } from '../uitls/constants.js';
+import { JOB_STATUS, JOB_TYPE, USER_ROLES } from '../utils/constants.js';
 import mongoose from 'mongoose';
 import Job from '../models/JobModel.js';
 import User from '../models/UserModel.js';

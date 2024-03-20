@@ -10,7 +10,10 @@ export const addJob = async (req, res) => {
 
 //R
 export const getAllJobs = async (req, res) => {
-	const jobs = await Job.find({ createdBy: req.user.userId });
+	const jobs =
+		req.user.role === 'admin'
+			? await Job.find()
+			: await Job.find({ createdBy: req.user.userId });
 	res.status(StatusCodes.OK).json({ jobs });
 };
 

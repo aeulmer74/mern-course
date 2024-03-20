@@ -1,6 +1,6 @@
 import User from '../models/UserModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { compareHash, createJWT, saltPass } from '../uitls/utility.js';
+import { compareHash, createJWT, saltPass } from '../utils/utility.js';
 import { UnauthenticatedError } from '../errors/customErrors.js';
 
 const register = async (req, res) => {
